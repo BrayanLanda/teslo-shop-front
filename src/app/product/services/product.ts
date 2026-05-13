@@ -29,4 +29,8 @@ export class Product {
         }),
       );
   }
+
+  getProductBySlug(idSlug: string): Observable<Product> {
+    return this.http.get<Product>(`${baseUrl}/products/${idSlug}`);
+  }
 }
