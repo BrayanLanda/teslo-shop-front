@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { ProductCard } from "../../components/product-card/product-card";
+import { rxResource } from '@angular/core/rxjs-interop';
+import { ProductCard } from '../../../product/components/product-card/product-card';
 import { Product } from '../../../product/services/product';
 
 @Component({
@@ -10,10 +11,11 @@ import { Product } from '../../../product/services/product';
 })
 export class HomePage {
   productsService = inject(Product);
+
   productsResource = rxResource({
-    request: () => ({}),
-    loader: ({ request }) => {
-        return this.productsService.getProducts()
-    }
-  })
+    params: () => ({}),
+    stream: ({ params }) => {
+      return this.productsService.getProducts({});
+    },
+  });
 }

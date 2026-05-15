@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-import { ProductResponse } from '../interfaces/product-response.interface';
+import { ProductResponse, Product as ProductInterface } from '../interfaces/product-response.interface';
 
 const baseUrl = environment.baseUrl;
 
@@ -30,7 +30,7 @@ export class Product {
       );
   }
 
-  getProductBySlug(idSlug: string): Observable<Product> {
-    return this.http.get<Product>(`${baseUrl}/products/${idSlug}`);
+  getProductBySlug(idSlug: string): Observable<ProductInterface> {
+    return this.http.get<ProductInterface>(`${baseUrl}/products/${idSlug}`);
   }
 }

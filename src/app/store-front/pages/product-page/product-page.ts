@@ -17,9 +17,9 @@ export class ProductPage {
   productIdSlug: string = this.activatedRoute.snapshot.params['idSlug'];
 
   productResource = rxResource({
-    request: () => ({ idSlug: this.productIdSlug }),
-    loader: ({ request }) => {
-      return this.productService.getProductBySlug(request.idSlug);
+    params: () => ({ idSlug: this.productIdSlug }),
+    stream: ({ params }) => {
+      return this.productService.getProductBySlug(params.idSlug);
     },
   });
 }
