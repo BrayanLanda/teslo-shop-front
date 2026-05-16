@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { ProductCard } from '../../../product/components/product-card/product-card';
-import { Product } from '../../../product/services/product';
+import { ProductCard } from '@/product/components/product-card/product-card';
+import { Product } from '@/product/services/product';
+import { Pagination } from '@/shared/pagination/pagination';
 
 @Component({
   selector: 'app-home-page',
-  imports: [ProductCard],
+  imports: [ProductCard, Pagination],
   templateUrl: './home-page.html',
   styleUrl: './home-page.css',
 })
